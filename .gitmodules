@@ -1,0 +1,3 @@
+[submodule "love-animation"]
+	path = love-animation
+	url = https://github.com/blobCopter/love-animation.git
