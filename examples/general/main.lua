@@ -1,8 +1,8 @@
-require 'controls'
-require 'hitbox'
-require 'state'
-require 'stateMachine'
-require 'vector'
+require 'utils/controls'
+require 'collisions/hitbox'
+require 'utils/stateMachine/state'
+require 'utils/stateMachine/stateMachine'
+require 'utils/vector'
 
 math.randomseed(os.time())
 
