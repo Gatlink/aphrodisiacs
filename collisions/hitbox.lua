@@ -1,4 +1,4 @@
-require 'Vector'
+require 'utils/Vector'
 
 Hitbox = {}
 Hitbox.__index = Hitbox
