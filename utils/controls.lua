@@ -23,12 +23,39 @@ function Controls.isKeyPressed(key)
 	return _keysPressed[key]
 end
 
+function Controls.isOnePressed(keys)
+  for _, key in ipairs(keys) do
+    if Controls.isKeyPressed(key) then
+      return true
+    end
+  end
+  return false
+end
+
 function Controls.isKeyHeld(key)
 	return _keysHold[key]
 end
 
+function Controls.isOneHeld(keys)
+  for _, key in ipairs(keys) do
+    if Controls.isKeyHeld(key) then
+      return true
+    end
+  end
+  return false
+end
+
 function Controls.isKeyReleased(key)
 	return not _keysHold[key]
+end
+
+function Controls.isOneReleased(keys)
+  for _, key in ipairs(keys) do
+    if Controls.isKeyReleased(key) then
+      return true
+    end
+  end
+  return false
 end
 
 -- Mouse
