@@ -85,6 +85,11 @@ function Vector:angle(oth)
 	return math.atan2(oth.y,oth.x) - math.atan2(self.y,self.x)
 end
 
+function Vector:set(x, y)
+  self.x = x
+  self.y = y
+end
+
 Vector.__class = "Vector"
 Vector.up = Vector.new(0, -1)
 Vector.down = Vector.new(0, 1)
