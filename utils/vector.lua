@@ -74,7 +74,11 @@ end
 
 -- in radians
 function Vector:angle(oth)
-	return math.atan2(oth.y,oth.x) - math.atan2(self.y,self.x)
+	if oth then 
+		return math.atan2(oth.y,oth.x) - math.atan2(self.y,self.x)
+	else
+	    return math.atan2(self.y,self.x)
+	end
 end
 
 function Vector:set(x, y)
@@ -93,6 +97,14 @@ end
 function Vector:projectOn(oth)
   local normalizedOth = oth:normalized()
   return normalizedOth * self:dot(normalizedOth)
+end
+
+function Vector:lerp(oth, t)
+	return Vector.new(math.lerp(self.x, oth.x, t), math.lerp(self.y, oth.y, t))
+end
+
+function Vector:nlerp(oth, t)
+	return self:lerp(oth, t):normalized()
 end
 
 Vector.zero = Vector.new()
