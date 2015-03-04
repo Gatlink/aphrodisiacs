@@ -10,6 +10,10 @@ function math.repeat_(t, length)
 	return t - math.floor(t / length) * length
 end
 
+function math.round(num)
+  return math.floor(num + 0.5)
+end
+
 math.twoPi = 2 * math.pi
 
 function math.smoothDamp(current, target, currentVelocity, smoothTime, maxSpeed, deltaTime)
