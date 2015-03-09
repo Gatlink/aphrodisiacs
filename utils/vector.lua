@@ -4,9 +4,9 @@ Vector.__index = Vector
 function Vector.new(x, y)
 	local new
 
-  x = x or 0
-  y = y or 0
-  new = {x = x, y = y}
+    x = x or 0
+    y = y or 0
+    new = {x = x, y = y}
 
 	setmetatable(new, Vector)
 	return new
@@ -82,8 +82,11 @@ function Vector:angle(oth)
 end
 
 function Vector:set(x, y)
-  self.x = x
-  self.y = y
+    self.x, self.y = x, y
+end
+
+function Vector:add_inplace(x, y)
+    self.x, self.y = self.x + x, self.y + y
 end
 
 function Vector:normal()
