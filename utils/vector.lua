@@ -107,6 +107,10 @@ function Vector:nlerp(oth, t)
 	return self:lerp(oth, t):normalized()
 end
 
+function Vector:unpack()
+    return self.x, self.y
+end
+
 Vector.zero = Vector.new()
 Vector.up = Vector.new(0, -1)
 Vector.down = Vector.new(0, 1)
