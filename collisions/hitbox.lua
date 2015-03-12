@@ -1,4 +1,4 @@
-require 'utils/Vector'
+require 'aphrodisiacs/utils/vector'
 
 Hitbox = {}
 Hitbox.__index = Hitbox

@@ -55,7 +55,11 @@ function Vector:clone()
 end
 
 function Vector:norm()
-	return math.sqrt(self.x^2 + self.y^2)
+	return math.sqrt(self.x * self.x + self.y * self.y)
+end
+
+function Vector:sqrNorm()
+    return self.x * self.x + self.y * self.y
 end
 
 function Vector:normalized()
