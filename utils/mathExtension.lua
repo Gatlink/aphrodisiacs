@@ -1,30 +1,41 @@
+local floor, min, max = math.floor, math.min, math.max
+
 function math.lerp(start, stop, t)
 	return start + (stop - start) * t
 end
 
-function math.clamp(value, min, max)
-	return math.min(max, math.max(min, value))
+local function clamp(value, minv, maxv)
+	return min(maxv, max(minv, value))
 end
+math.clamp = clamp
 
 function math.repeat_(t, length)
-	return t - math.floor(t / length) * length
+	return t - floor(t / length) * length
 end
 
 function math.round(num)
-  return math.floor(num + 0.5)
+  return floor(num + 0.5)
 end
 
 math.twoPi = 2 * math.pi
 
+function math.deltaAngle(current, target)
+    local num = math.repeat_(target - current, math.twoPi)
+    if num > math.pi then
+        num = num - math.twoPi
+    end
+    return num;
+end
+
 function math.smoothDamp(current, target, currentVelocity, smoothTime, maxSpeed, deltaTime)
-	smoothTime = math.max(0.0001, smoothTime)
+	smoothTime = max(0.0001, smoothTime)
 	local num = 2 / smoothTime
 	local num2 = num * deltaTime
 	local num3 = 1 / (1 + num2 + 0.48 * num2 * num2 + 0.235 * num2 * num2 * num2)
 	local num4 = current - target
 	local num5 = target
 	local num6 = maxSpeed * smoothTime
-	num4 = math.clamp(num4, -num6, num6)
+	num4 = clamp(num4, -num6, num6)
 	target = current - num4
 	local num7 = (currentVelocity + num * num4) * deltaTime
 	currentVelocity = (currentVelocity - num * num7) * num3
@@ -39,12 +50,4 @@ end
 function math.smoothDampAngle(current, target, currentVelocity, smoothTime, maxSpeed, deltaTime)
 	target = current + math.deltaAngle(current, target)
 	return math.smoothDamp(current, target, currentVelocity, smoothTime, maxSpeed, deltaTime)
-end
-
-function math.deltaAngle(current, target)
-	local num = math.repeat_(target - current, math.twoPi)
-	if num > math.pi then
-		num = num - math.twoPi
-	end
-	return num;
 end
