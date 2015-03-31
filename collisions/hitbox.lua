@@ -42,6 +42,23 @@ function Hitbox:move(dir)
 	self.max = self.max + dir
 end
 
+function Hitbox:place(pos)
+    local ext = self:extent()
+
+    self.min = pos - ext * 0.5
+    self.max = pos + ext * 0.5
+end
+
+function Hitbox:grow(amount)
+    local disp = amount * 0.5
+    self.min = self.min - disp
+    self.max = self.max + disp
+end
+
+function Hitbox:extent()
+    return self.max - self.min
+end
+
 function Hitbox:draw()
 	local min, max = self.min, self.max
 
